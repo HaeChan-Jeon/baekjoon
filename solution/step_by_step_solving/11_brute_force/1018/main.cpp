@@ -4,33 +4,37 @@
 #include <algorithm>
 
 int main() {
-    uint32_t n, m;
+    int32_t n, m;
 
     std::cin >> n >> m;
 
-    char** array = new char*[n];
+    int8_t** array = new int8_t*[n];
 
-    for (uint32_t i = 0; i < n; i++)
+    for (int32_t i = 0; i < n; i++)
     {
-        array[i] = new char[m];
+        array[i] = new int8_t[m];
 
-        for (uint32_t j = 0; j < m; j++)
+        for (int32_t j = 0; j < m; j++)
         {
             std::cin >> array[i][j];
         }
     }
 
-    uint32_t start_n_point = 0, start_m_point = 0;
-    uint32_t min_recolor = 64;
+    int32_t start_n_point = 0, start_m_point = 0;
+
+    int32_t min_recolor = 64;
+
+    int32_t count_started_w;
+    int32_t count_started_b;
 
     while (true)
     {
-        uint32_t count_started_w = 0;
-        uint32_t count_started_b = 0;
+        count_started_w = 0;
+        count_started_b = 0;
 
-        for (uint32_t i = start_n_point; i < start_n_point + 8; i++)
+        for (int32_t i = start_n_point; i < start_n_point + 8; i++)
         {
-            for (uint32_t j = start_m_point; j < start_m_point + 8; j++)
+            for (int32_t j = start_m_point; j < start_m_point + 8; j++)
             {
                 if ((i + j) % 2 == 0)
                 {
@@ -75,7 +79,7 @@ int main() {
         }
     }
 
-    for (uint8_t i = 0; i < n; i++)
+    for (int32_t i = 0; i < n; i++)
     {
         delete[] array[i];
     }
