@@ -26,7 +26,7 @@ int main() {
 
     std::cin >> a >> b;
 
-    std::cout << lcd(a, b);
+    std::cout << lcm(a, b);
 
     return 0;
 }
