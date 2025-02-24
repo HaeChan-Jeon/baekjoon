@@ -11,7 +11,7 @@ void backtracking(int16_t start = 0, int16_t count = 0, std::string outputStr = 
         return;
     }
     
-    for (int16_t i = start; i < n; ++i) {
+    for (int16_t i = 0; i < n; ++i) {
         backtracking(i, count + 1, outputStr + std::to_string(i + 1) + " ");
     }
 }
