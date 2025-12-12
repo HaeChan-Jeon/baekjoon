@@ -1,41 +1,37 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int temp;
-vector<int> b(9);
+int temp, inputSum, cnt = 9, sum = 100;
+vector<int> v(9);
+pair<int, int> p;
 
-void combi(int start, vector<int> ret, int sum) {
-	if(sum > 100) {
-		return;
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL); cout.tie(NULL);
+	
+	for(int i = 0; i < cnt; ++i) {
+		cin >> temp;
+		v[i] = temp;
+		inputSum += temp;
 	}
 	
-	if(ret.size() == 7) {
-		if(sum == 100) {
-			sort(ret.begin(), ret.end());
-			for(auto it : ret) cout << it << "\n";
-			exit(0);
+	for(int i = 0; i < cnt; ++i) {
+		for(int j = i + 1; j < cnt; ++j) {
+			if(sum == inputSum - v[i] - v[j]) {
+				p = { v[i], v[j] };
+				break;
+			}
+		}
+	}
+	
+	sort(v.begin(), v.end());
+	
+	for(auto it : v) {
+		if(it != p.first && it != p.second) {
+			cout << it << "\n";
 		}
 	}
 	
 	
-	for(int i = start + 1; i < 9; i++) {
-		ret.push_back(b[i]);
-		sum += b[i];
-		combi(i, ret, sum);
-		sum -= b[i];
-		ret.pop_back();
-	}
-}
-
-int main() {
-	for(int i = 0; i < 9; i++) {
-		cin >> temp;
-		b[i] = temp;
-	}
-	
-	vector<int> ret;
-	int sum = 0;
-	
-	combi(-1, ret, sum);
 	return 0;
 }
