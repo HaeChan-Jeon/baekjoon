@@ -1,24 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int temp, inputSum, cnt = 9, sum = 100;
 vector<int> v(9);
-pair<int, int> p;
+int sum;
+bool check;
 
 int main() {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
 	
-	for(int i = 0; i < cnt; ++i) {
-		cin >> temp;
-		v[i] = temp;
-		inputSum += temp;
+	for(int i = 0; i < 9; ++i) {
+		cin >> v[i];
+		sum += v[i];
 	}
 	
-	for(int i = 0; i < cnt; ++i) {
-		for(int j = i + 1; j < cnt; ++j) {
-			if(sum == inputSum - v[i] - v[j]) {
-				p = { v[i], v[j] };
+	for(int i = 0; i < 9; ++i) {
+		if(check) break;
+		
+		for(int j = i + 1; j < 9; ++j) {
+			if((sum - v[i] - v[j]) == 100) {
+				v[i] = v[j] = -1;
+				check = true;
 				break;
 			}
 		}
@@ -26,12 +28,9 @@ int main() {
 	
 	sort(v.begin(), v.end());
 	
-	for(auto it : v) {
-		if(it != p.first && it != p.second) {
-			cout << it << "\n";
-		}
+	for(int i = 2; i < 9; ++i) {
+		cout << v[i] << "\n";
 	}
-	
 	
 	return 0;
 }
