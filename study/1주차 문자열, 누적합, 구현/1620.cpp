@@ -5,7 +5,6 @@ int n, m;
 string s;
 map<string, int> m1;
 map<int, string> m2;
-vector<int> ret;
 
 int main() {
 	ios_base::sync_with_stdio(false);
@@ -18,8 +17,8 @@ int main() {
 		m1[s] = i + 1;
 		m2[i + 1] = s;
 	}
-
-	while(m--) {
+	
+	for(int i = 0; i < m; ++i) {
 		cin >> s;
 		if(atoi(s.c_str())) {
 			cout << m2[atoi(s.c_str())] << "\n";
@@ -27,6 +26,6 @@ int main() {
 			cout << m1[s] << "\n";
 		}
 	}
-
+		
 	return 0;
 }
