@@ -2,12 +2,12 @@
 using namespace std;
 
 typedef long long ll;
-
 ll a, b, c;
 
-ll go(ll a, ll b) {
+ll go(ll b) {
+	ll ret;
 	if(b == 1) return a % c;
-	ll ret = go(a, b / 2);
+	ret = go(b / 2) % c;
 	ret = (ret * ret) % c;
 	if(b & 1) ret = (ret * a) % c;
 	return ret;
@@ -18,8 +18,7 @@ int main() {
 	cin.tie(NULL); cout.tie(NULL);
 	
 	cin >> a >> b >> c;
+	cout << go(b);
 	
-	cout << go(a, b);
-		
 	return 0;
 }
