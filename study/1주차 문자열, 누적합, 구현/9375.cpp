@@ -1,8 +1,8 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int n, m, ret;
-string a, b;
+string dump, type;
 map<string, int> _map;
 
 int main() {
@@ -10,20 +10,22 @@ int main() {
 	cin.tie(NULL); cout.tie(NULL);
 	
 	cin >> n;
+	
 	while(n--) {
 		cin >> m;
 		while(m--) {
-			cin >> a >> b;
-			_map[b]++;
+			cin >> dump >> type;
+			_map[type]++;
 		}
+		
 		ret = 1;
 		for(auto it : _map) {
-			ret *= it.second + 1;
+			ret *= (it.second + 1);
 		}
 		ret -= 1;
 		cout << ret << "\n";
 		_map.clear();
 	}
-		
+	
 	return 0;
 }
